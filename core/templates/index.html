@@ -6,6 +6,10 @@
 {% block conteudo %}
 
 <section class="hero">
+    <nav class="navbar">
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'cadastro' %}" class="cadastrar">Cadastrar</a>
+    </nav>
     <div class="hero-content">
         <h1>Gerenciamento de Eventos</h1>
         <p>Organize, gerencie e acompanhe eventos de forma simples e eficiente.</p>
@@ -31,14 +35,6 @@
         <p>Controle inscrições e participantes.</p>
         <a href="#" class="btn-card">Gerenciar Participantes →</a>
     </div>
-
-    <a href="/login/" class="btn-login">
-        Login
-    </a>
-    
-    <a href="/cadastro/" class="btn-cadastro">
-        Cadastrar
-    </a>
 
     <div class="card">
         <div class="icon">📊</div>
