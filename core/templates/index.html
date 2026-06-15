@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Início{% endblock %}
+
+{% block conteudo %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Gerenciamento de Eventos</h1>
+        <p>Organize, gerencie e acompanhe eventos de forma simples e eficiente.</p>
+
+        <a href="#" class="btn-primary">
+            Começar Agora →
+        </a>
+    </div>
+</section>
+
+<section class="cards">
+
+    <div class="card">
+        <div class="icon">📅</div>
+        <h2>Eventos</h2>
+        <p>Cadastre e gerencie eventos facilmente.</p>
+        <a href="#" class="btn-card">Gerenciar Eventos →</a>
+    </div>
+
+    <div class="card">
+        <div class="icon">👥</div>
+        <h2>Participantes</h2>
+        <p>Controle inscrições e participantes.</p>
+        <a href="#" class="btn-card">Gerenciar Participantes →</a>
+    </div>
+
+    <a href="/login/" class="btn-login">
+        Login
+    </a>
+    
+    <a href="/cadastro/" class="btn-cadastro">
+        Cadastrar
+    </a>
+
+    <div class="card">
+        <div class="icon">📊</div>
+        <h2>Relatórios</h2>
+        <p>Acompanhe informações importantes.</p>
+        <a href="#" class="btn-card">Ver Relatórios →</a>
+    </div>
+
+</section>
+
+{% endblock %}

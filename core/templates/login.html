@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block conteudo %}
+
+<div class="login-container">
+    <div class="login-card">
+
+        <h1>Entrar</h1>
+        <p>Acesse sua conta para gerenciar eventos</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label>E-mail</label>
+                <input type="email" placeholder="Digite seu e-mail">
+            </div>
+
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" placeholder="Digite sua senha">
+            </div>
+
+            <button type="submit" class="btn-login-page">
+                Entrar
+            </button>
+
+            <p class="cadastro-link">
+                Ainda não possui conta?
+                <a href="/cadastro/">Cadastre-se</a>
+            </p>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
