@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Editar Evento{% endblock %}
+
+{% block conteudo %}
+<div class="pagina-participantes">
+    <div class="container-participantes" style="grid-template-columns:1fr; gap:20px;">
+        <section class="painel-participantes">
+            <div class="cabecalho-painel">
+                <p class="rotulo-painel">Editar Evento</p>
+            </div>
+            <div class="cartao-formulario">
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="mensagem-erro">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <div class="grupo-campo">
+                        {{ form.nome.label_tag }}
+                        {{ form.nome }}
+                        {{ form.nome.errors }}
+                    </div>
+
+                    <div class="grupo-campo">
+                        {{ form.descricao.label_tag }}
+                        {{ form.descricao }}
+                        {{ form.descricao.errors }}
+                    </div>
+
+                    <div class="form-row-duplo">
+                        <div class="grupo-campo field-small">
+                            {{ form.data.label_tag }}
+                            {{ form.data }}
+                            {{ form.data.errors }}
+                        </div>
+                        <div class="grupo-campo field-small">
+                            {{ form.horario.label_tag }}
+                            {{ form.horario }}
+                            {{ form.horario.errors }}
+                        </div>
+                    </div>
+
+                    <div class="grupo-campo">
+                        {{ form.local.label_tag }}
+                        {{ form.local }}
+                        {{ form.local.errors }}
+                    </div>
+
+                    <div class="grupo-campo">
+                        {{ form.vagas.label_tag }}
+                        {{ form.vagas }}
+                        {{ form.vagas.errors }}
+                    </div>
+
+                    <div class="acoes-formulario">
+                        <a href="{% url 'eventos' %}" class="botao-cancelar">Voltar</a>
+                        <button type="submit" class="botao-salvar">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

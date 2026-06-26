@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Participantes{% endblock %}
+
+{% block conteudo %}
+<div class="pagina-participantes">
+    <div class="container-participantes">
+        <section class="painel-participantes">
+            <div class="cabecalho-painel">
+                <div>
+                    <p class="rotulo-painel">Participantes</p>
+                </div>
+                <a href="#form-cadastro" class="botao-novo">+ Novo Participante</a>
+            </div>
+
+            <div class="acoes-painel">
+                <form method="get" class="caixa-busca">
+                    <input type="text" name="busca" placeholder="Buscar participantes..." value="{{ busca }}" />
+                    <button type="submit" class="botao-buscar">Buscar</button>
+                </form>
+            </div>
+
+            <div class="cartao-tabela">
+                <table class="tabela-participantes">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Evento</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if participantes.exists %}
+                            {% for participante in participantes %}
+                                <tr>
+                                    <td>{{ participante.id }}</td>
+                                    <td>{{ participante.nome }}</td>
+                                    <td>{{ participante.email }}</td>
+                                    <td>{{ participante.telefone }}</td>
+                                    <td>{{ participante.evento.nome }}</td>
+                                    <td>
+                                        <div class="botoes-acoes">
+                                            <a href="{% url 'editar_participante' participante.id %}" class="botao-editar">✎</a>
+                                            <a href="{% url 'excluir_participante' participante.id %}" class="botao-excluir">🗑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="6" style="text-align:center; padding: 32px 0;">Nenhum participante encontrado.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                <p class="rodape-tabela">Mostrando {{ participantes.count }} participante(s)</p>
+            </div>
+        </section>
+
+        <aside class="painel-formulario" id="form-cadastro">
+            <div class="cartao-formulario">
+                <h2>Cadastrar Participante</h2>
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="mensagem-erro">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <div class="grupo-campo">
+                        {{ form.nome.label_tag }}
+                        {{ form.nome }}
+                        {{ form.nome.errors }}
+                    </div>
+
+                    <div class="grupo-campo">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+
+                    <div class="grupo-campo">
+                        {{ form.telefone.label_tag }}
+                        {{ form.telefone }}
+                        {{ form.telefone.errors }}
+                    </div>
+
+                    <div class="grupo-campo">
+                        {{ form.evento.label_tag }}
+                        {{ form.evento }}
+                        {{ form.evento.errors }}
+                    </div>
+
+                    <div class="acoes-formulario">
+                        <button type="reset" class="botao-cancelar">Cancelar</button>
+                        <button type="submit" class="botao-salvar">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </aside>
+    </div>
+</div>
+{% endblock %}

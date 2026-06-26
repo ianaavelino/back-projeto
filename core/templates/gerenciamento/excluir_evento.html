@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Excluir Evento{% endblock %}
+
+{% block conteudo %}
+<div class="pagina-participantes">
+    <div class="container-participantes" style="grid-template-columns:1fr; gap:20px;">
+        <section class="painel-participantes">
+            <div class="cabecalho-painel">
+                <p class="rotulo-painel">Excluir Evento</p>
+            </div>
+            <div class="cartao-tabela">
+                <p>Tem certeza que deseja excluir <strong>{{ evento.nome }}</strong>?</p>
+                <form method="post" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
+                    {% csrf_token %}
+                    <button type="submit" class="botao-excluir">Excluir</button>
+                    <a href="{% url 'eventos' %}" class="botao-cancelar">Cancelar</a>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
