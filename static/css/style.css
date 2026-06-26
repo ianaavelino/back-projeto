@@ -288,10 +288,33 @@ body{
     margin-bottom:24px;
 }
 
+.cabecalho-acoes{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
 .rotulo-painel{
     font-size:28px;
     font-weight:700;
     color:#0f3d18;
+}
+
+.botao-voltar{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#f0f0f0;
+    color:#333;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:700;
+    border:1px solid #d8d8d8;
+}
+
+.botao-voltar:hover{
+    background:#e6e6e6;
 }
 
 .botao-novo{
@@ -493,8 +516,6 @@ body{
     .botao-salvar{
         width:100%;
     }
-}
-
 }
 
 .btn-cadastrar:hover{

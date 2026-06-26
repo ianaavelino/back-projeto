@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.models import User
 from .models import Participante, Evento
 
 
@@ -70,3 +72,50 @@ class EventoForm(forms.ModelForm):
                 'class': 'campo-input'
             }),
         }
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label='E-mail',
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Digite seu e-mail',
+            'class': 'campo-input'
+        })
+    )
+    password = forms.CharField(
+        label='Senha',
+        strip=False,
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Digite sua senha',
+            'class': 'campo-input'
+        })
+    )
+
+
+class RegistroForm(UserCreationForm):
+    first_name = forms.CharField(
+        label='Nome completo',
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Digite seu nome',
+            'class': 'campo-input'
+        })
+    )
+    email = forms.EmailField(
+        label='E-mail',
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Digite seu e-mail',
+            'class': 'campo-input'
+        })
+    )
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'email', 'password1', 'password2']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.username = self.cleaned_data['email']
+        user.email = self.cleaned_data['email']
+        user.first_name = self.cleaned_data['first_name']
+        if commit:
+            user.save()
+        return user

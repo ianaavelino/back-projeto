@@ -14,29 +14,35 @@
         <form method="POST">
             {% csrf_token %}
 
+            {% if form.non_field_errors %}
+                <div class="mensagem-erro">{{ form.non_field_errors }}</div>
+            {% endif %}
+
             <div class="input-group">
-                <label>Nome Completo</label>
-                <input type="text" placeholder="Digite seu nome">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
             </div>
 
             <div class="input-group">
-                <label>E-mail</label>
-                <input type="email" placeholder="Digite seu e-mail">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {{ form.email.errors }}
             </div>
 
             <div class="input-group">
-                <label>Senha</label>
-                <input type="password" placeholder="Digite sua senha">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+                {{ form.password1.errors }}
             </div>
 
             <div class="input-group">
-                <label>Confirmar Senha</label>
-                <input type="password" placeholder="Confirme sua senha">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+                {{ form.password2.errors }}
             </div>
 
-            <button type="submit" class="btn-cadastrar">
-                Cadastrar
-            </button>
+            <button type="submit" class="btn-cadastrar">Cadastrar</button>
 
             <p class="login-link">
                 Já possui conta?
