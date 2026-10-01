@@ -1,13 +1,56 @@
 {% extends 'base.html' %}
 
+{% block titulo %}
+Dashboard
+{% endblock %}
+
 {% block conteudo %}
 
-<h1>Dashboard</h1>
+<div class="dashboard-page">
 
-<h2>Dados do sistema</h2>
+    <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <p>Visão geral do sistema</p>
+    </div>
 
-<p>Total de eventos: {{ total_eventos }}</p>
+    <div class="dashboard-content">
 
-<p>Total de participantes: {{ total_participantes }}</p>
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+                <div class="dashboard-icon">📅</div>
+
+                <div>
+                    <span>Total de Eventos</span>
+                    <strong>{{ total_eventos }}</strong>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-icon">👥</div>
+
+                <div>
+                    <span>Total de Participantes</span>
+                    <strong>{{ total_participantes }}</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dashboard-info">
+            <h2>Gerenciamento de Eventos</h2>
+
+            <p>
+                Consulte e gerencie os eventos cadastrados no sistema.
+            </p>
+
+            <a href="{% url 'eventos' %}" class="dashboard-button">
+                Gerenciar Eventos
+            </a>
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}
