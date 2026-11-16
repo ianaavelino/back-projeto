@@ -2,6 +2,7 @@
 from pathlib import Path
 from decouple import config, Csv
 import os
+import dj_database_url
 
 # Caminho principal do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
 # Middlewares
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,12 +61,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'gerenciamento.wsgi.application'
 
 # Banco de dados
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+'''
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://fic:8q3EPgE3DBEF9LVciW2oNSvi0zB09r5K@dpg-dbp1m1rbc2fs73dqssbg-a/fic_wma2',
+        conn_max_age=600
+    )
+}
+
 
 # Validação de senhas
 AUTH_PASSWORD_VALIDATORS = [
