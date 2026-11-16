@@ -9,3 +9,4 @@ ALLOWED_HOSTS = config(
     default='127.0.0.1,localhost',
     cast=Csv()
 )
+ROOT_URLCONF = 'gerenciamento.urls'

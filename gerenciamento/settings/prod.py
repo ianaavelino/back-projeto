@@ -15,7 +15,7 @@ DATABASES = {
         ssl_require=True,
     )
 }
-
+ROOT_URLCONF = 'gerenciamento.urls'
 # Arquivos estáticos
 MIDDLEWARE.insert(
     1,
