@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from decouple import config, Csv
+import os
 
 # Caminho principal do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -89,9 +90,15 @@ USE_TZ = True
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'eventos'
 LOGOUT_REDIRECT_URL = 'index'
+DEBUG = False
 
 # Arquivos estáticos
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
