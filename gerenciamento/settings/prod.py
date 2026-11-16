@@ -11,9 +11,9 @@ ALLOWED_HOSTS = config(
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL'),
-        conn_max_age=600,
-        ssl_require=True,
+        # Replace this value with your local database's connection string.
+        default='postgresql://fic:8q3EPgE3DBEF9LVciW2oNSvi0zB09r5K@dpg-dbp1m1rbc2fs73dqssbg-a/fic_wma2',
+        conn_max_age=600
     )
 }
 
