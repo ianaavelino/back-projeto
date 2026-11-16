@@ -1,5 +1,13 @@
-from django.urls import path
+
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
+from .api_views import EventoViewSet, ParticipanteViewSet
+
+# Configuração do roteador da API
+router = DefaultRouter()
+router.register(r'eventos', EventoViewSet)
+router.register(r'participantes', ParticipanteViewSet)
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -12,4 +20,7 @@ urlpatterns = [
     path('participantes/editar/<int:participante_id>/', views.editar_participante, name='editar_participante'),
     path('participantes/excluir/<int:participante_id>/', views.excluir_participante, name='excluir_participante'),
     path('logout/', views.logout_view, name='logout'),
+
+    # Rotas da API
+    path('api/', include(router.urls)),
 ]
