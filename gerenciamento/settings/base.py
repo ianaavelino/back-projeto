@@ -9,6 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Chave secreta carregada do .env
 SECRET_KEY = config('SECRET_KEY')
 
+ROOT_URLCONF = 'gerenciamento.urls'
+
 # Aplicativos instalados
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -34,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'gerenciamento.urls'
+
 
 # Configuração dos templates
 TEMPLATES = [
