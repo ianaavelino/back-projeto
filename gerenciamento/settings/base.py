@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'core',
     'dashboard',
     'rest_framework',
+    'drf_spectacular',
 ]
 
 # Middlewares
@@ -94,3 +95,14 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API - Gerenciamento de Eventos',
+    'DESCRIPTION': 'Documentação da API do sistema de gerenciamento de eventos.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
