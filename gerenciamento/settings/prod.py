@@ -15,7 +15,13 @@ DATABASES = {
         ssl_require=True,
     )
 }
+
 ROOT_URLCONF = 'gerenciamento.urls'
+
+WSGI_APPLICATION = 'gerenciamento.wsgi.application'
+
+ASGI_APPLICATION = 'gerenciamento.asgi.application'
+
 # Arquivos estáticos
 MIDDLEWARE.insert(
     1,
