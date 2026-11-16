@@ -70,10 +70,10 @@ DATABASES = {
 }
 '''
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://fic:8q3EPgE3DBEF9LVciW2oNSvi0zB09r5K@dpg-dbp1m1rbc2fs73dqssbg-a/fic_wma2',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
