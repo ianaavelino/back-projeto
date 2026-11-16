@@ -17,16 +17,12 @@ DATABASES = {
 }
 
 ROOT_URLCONF = 'gerenciamento.urls'
-
+'''
 WSGI_APPLICATION = 'gerenciamento.wsgi.application'
 
 ASGI_APPLICATION = 'gerenciamento.asgi.application'
+'''
 
-# Arquivos estáticos
-MIDDLEWARE.insert(
-    1,
-    'whitenoise.middleware.WhiteNoiseMiddleware'
-)
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -40,7 +36,8 @@ STORAGES = {
 }
 
 # Segurança HTTPS
+'''
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
-
+'''
